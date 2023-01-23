@@ -91,8 +91,9 @@ router.post('/login', [
 //Route 3:Get logged in user details ising POST"api/auth/getuser".login required 
 router.post('/getuser',fetchuser, async (req, res) => {
 try {
-  userId ="todo"
+  userId =req.user.id;
   const user = await User.findById(userId).select("-password")
+  res.send(user);
 }
   
   catch (error) {
