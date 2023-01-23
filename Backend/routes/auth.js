@@ -4,7 +4,8 @@ const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 const { body, validationResult } = require('express-validator');
-const JWT_SECRET = 'manishhimalayaia@stude$nt'
+const fetchuser = require('../middleware/fetchuser');
+const JWT_SECRET = 'manishhimalayaia@stude$nt';
 
 //Create a User using : POST "/api/auth/createUser". Doesn't require Auth
 router.post('/createUser', [
@@ -88,11 +89,7 @@ router.post('/login', [
   })
 
 //Route 3:Get logged in user details ising POST"api/auth/getuser".login required 
-router.post('/getuser', [
-  body('email', 'enter a valid email').isEmail(),
-  body('password', 'Password cannot be blank').exists(),
-],
-  async (req, res) => {
+router.post('/getuser',fetchuser, async (req, res) => {
 try {
   userId ="todo"
   const user = await User.findById(userId).select("-password")
