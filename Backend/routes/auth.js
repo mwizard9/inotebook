@@ -87,5 +87,20 @@ router.post('/login', [
     }
   })
 
-
+//Route 3:Get logged in user details ising POST"api/auth/getuser".login required 
+router.post('/getuser', [
+  body('email', 'enter a valid email').isEmail(),
+  body('password', 'Password cannot be blank').exists(),
+],
+  async (req, res) => {
+try {
+  userId ="todo"
+  const user = await User.findById(userId).select("-password")
+}
+  
+  catch (error) {
+    console.error(error.message);
+    res.status(500).send("internal server error")
+  }
+})
 module.exports = router
