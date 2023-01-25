@@ -77,7 +77,6 @@ router.put('/updatenote/:id', fetchuser, async (req, res) => {
 
 // ROUTE 3:delete the notes, login required
 router.delete('/deletenote/:id', fetchuser, async (req, res) => {
-    const { title, description, tag } = req.body;
 
     try {
         //find the note to be updatated and delete it
