@@ -1,9 +1,11 @@
-import React from 'react'
+import React , { useContext } from 'react'
 
-function About() {
+
+const About = ()=> {
+    
   return (
     <div>
-      <h1>This is about</h1>
+      <h1>This is about page</h1>
     </div>
   )
 }

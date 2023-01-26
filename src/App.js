@@ -6,10 +6,13 @@ import{
 import NavBar from './components/NavBar';
 import Home from './components/Home';
 import About from './components/About';
+import NoteState from './context/Notes/NoteState';
+
 
 function App() {
   return (
     <>
+    <NoteState>
     <Router>
     <NavBar/>
     <Routes>
@@ -19,6 +22,7 @@ function App() {
             </Route>
     </Routes>
     </Router>
+    </NoteState>
       
       
     </>
