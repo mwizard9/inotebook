@@ -3,6 +3,7 @@ import { useState } from "react";
 import NoteContext from "./NoteContext";
 
 const NoteState = (props) => {
+  const host = "http://localhost:5000"
     const notesInitial = 
         [
             {
@@ -43,10 +44,22 @@ const NoteState = (props) => {
             }
           ]
           const [notes,setNotes] =useState(notesInitial)
-          //TODO API call
+          
           
           //Add a Note
-          const addNote = (title,description,tag) => {
+          const addNote = async (title,description,tag) => {
+            //TODO API call
+            const response = await fetch(`${host}/api/notes/addnotes`, {
+              method: 'POST', 
+              headers: {
+                'Content-Type': 'application/json',
+                'auth-token' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6'
+                
+              },
+               body: JSON.stringify({title,description,tag}) 
+            });
+ 
+
             console.log("adding a new note")
             const note = {
               "_id": "63cfb4efe9f7b3d396bdafd1",
@@ -71,7 +84,28 @@ const NoteState = (props) => {
             
           }
           //Edit a NOte
-          const editNote = () => {
+          const editNote =async (id,title,description,tag) => {
+            //API call
+            const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
+              method: 'POST', 
+              headers: {
+                'Content-Type': 'application/json',
+                'auth-token' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6'
+                
+              },
+               body: JSON.stringify(title,description,tag) 
+            });
+           const json = response.json(); 
+          
+            for (let index = 0; index < notes.length; index++) {
+              const element = notes[index];
+              if(element._id=== id){
+                element.title = title;
+                element.description = description;
+                element.tag = tag;
+              }
+              
+            }
             
           }
     
