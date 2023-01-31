@@ -31,7 +31,7 @@ const NoteState = (props) => {
               method: 'POST', 
               headers: {
                 'Content-Type': 'application/json',
-                'auth-token' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6'
+                'auth-token' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNjZTU3ZWVmMDlhZTBlMjYyMzRjNDcwIn0sImlhdCI6MTY3NDQ2NzMxMH0.2rkB8eMa1UIpGb1mVTpA7t1KVAsQpg1XRgDywBTcMBQ'
                 
               },
                body: JSON.stringify({title,description,tag}) 
