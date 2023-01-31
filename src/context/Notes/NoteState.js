@@ -4,26 +4,26 @@ import NoteContext from "./NoteContext";
 
 const NoteState = (props) => {
   const host = "http://localhost:5000"
-    const notesInitial = 
-        [ ]
+    const notesInitial = []
           const [notes,setNotes] =useState(notesInitial)
 
           //Get all Notes
           const getNotes = async () => {
             // API call
-            const response = await fetch(`${host}/api/notes/featchallnotes`, {
-              method: 'POST', 
+            const response = await fetch(`${host}/api/notes/fetchallnotes`, {
+              method: 'GET', 
               headers: {
                 'Content-Type': 'application/json',
-                'auth-token' : 'eeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNjZTU3ZWVmMDlhZTBlMjYyMzRjNDcwIn0sImlhdCI6MTY3NDQ2NzMxMH0.2rkB8eMa1UIpGb1mVTpA7t1KVAsQpg1XRgDywBTcMBQ'
+                'auth-token' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNjZTU3ZWVmMDlhZTBlMjYyMzRjNDcwIn0sImlhdCI6MTY3NDQ2NzMxMH0.2rkB8eMa1UIpGb1mVTpA7t1KVAsQpg1XRgDywBTcMBQ'
                 
               },
           });
           const json = await response.json()
           console.log(json)
+          setNotes(json)
         }
           
-          
+    
           //Add a Note
           const addNote = async (title,description,tag) => {
             //TODO API call
@@ -89,7 +89,7 @@ const NoteState = (props) => {
     
     
     return (
-        <NoteContext.Provider value={{notes,setNotes,deleteNote,addNote,editNote}}>
+        <NoteContext.Provider value={{notes,setNotes,deleteNote,addNote,editNote,getNotes}}>
             {props.children}
         </NoteContext.Provider>
     )
