@@ -7,7 +7,7 @@ import { useEffect,useState } from 'react';
 
 const Notes = () => {
   const context = useContext(noteContext);
-  const { notes, getNotes } = context;
+  const { notes, getNotes, editNote } = context;
   useEffect(() => {
     getNotes()
   }, [])
@@ -25,6 +25,7 @@ const Notes = () => {
 
   const handleClick = (e) => {
     console.log("updating the note",note)
+    editNote(note.id, note.etitle,note.edescription,note.etag)
     refClose.current.click();
     
 }
@@ -66,8 +67,8 @@ const onChange = (e)=>{
               </form>
             </div>
             <div className="modal-footer">
-              <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button onClick={handleClick} type="button" className="btn btn-primary">Update Note</button>
+              <button  type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button ref={refClose} onClick={handleClick} type="button" className="btn btn-primary">Update Note</button>
             </div>
           </div>
         </div>
