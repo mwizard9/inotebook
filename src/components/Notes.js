@@ -67,8 +67,8 @@ const onChange = (e)=>{
               </form>
             </div>
             <div className="modal-footer">
-              <button  type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button ref={refClose} onClick={handleClick} type="button" className="btn btn-primary">Update Note</button>
+              <button ref={refClose}  type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button onClick={handleClick} type="button" className="btn btn-primary">Update Note</button>
             </div>
           </div>
         </div>
