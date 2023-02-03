@@ -10,16 +10,17 @@ const Notes = () => {
   const { notes, getNotes, editNote } = context;
   useEffect(() => {
     getNotes()
+    // eslint-disable-next-line
   }, [])
   const ref = useRef(null)
   const refClose = useRef(null)
 
   const[note,setNote] = useState({id:"", etitle:"",edescription:"",etag:""});
 
-  const updateNote = (currentNotes) => {
-    ref.current.click();
-    setNote({id: currentNotes._id, etitle:currentNotes.title,edescription:currentNotes.description,etag:currentNotes.tag})
-
+  const updateNote = (currentNote) => {
+    ref.current.click(); 
+    setNote({id:currentNote._id, etitle:currentNote.title,edescription:currentNote.description,etag:currentNote.tag})
+      
   }
 
 
